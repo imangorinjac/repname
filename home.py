@@ -1,13 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request,flask
 app = Flask(__name__)
-from datetime import datetime
 
-@app.route('/')
+name=request.form('name')
+@app.route('/',methods=['GET','POST'])
 
 def home():
-    time=datetime.now()
-
-    return render_template('index.html',value=time)
+  
+    return render_template('index.html',name=name)
 
 if __name__ == '__main__':
    app.run()
